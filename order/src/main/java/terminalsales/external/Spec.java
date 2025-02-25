@@ -12,4 +12,5 @@ public class Spec {
     private String phoneType;
     private Object image;
     private Object detailSpec;
+    private Long price;
 }

@@ -1,6 +1,7 @@
 package terminalsales.domain;
 
 import terminalsales.domain.OrderPlaced;
+import terminalsales.external.Spec;
 import terminalsales.OrderApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -22,57 +23,37 @@ public class Order  {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    
-    
-    
     private Long id;
-    
-    
-    
     
     private String address;
     
-    
-    
-    
     private Boolean breakInsurance;
     
-    
-    
-    
     private Boolean lostInsurance;
-    
-    
     
     @Embedded
     private SpecId specId;
     
-    
-    
     @Embedded
     private UserId userId;
     
-    
-    
-    
     private Long price;
     
-    
-    
-    
     private Long paymentId;
-    
-    
-    
     
     private String paymentStatus;
 
     @PostPersist
     public void onPostPersist(){
-    Spec spec = OrderApplication.applicationContext
-        .getBean(terminalsales.external.SpecService.class)
-        .getTerminal(get??);
+
+        ObjectMapper mapper = new ObjectMapper();
+        Map<Long, Object> specMap = mapper.convertValue(getSpecId(), Map.class);
+
+        Spec spec = OrderApplication.applicationContext
+            .getBean(terminalsales.external.SpecService.class)
+            .getTerminal((Long)specMap.get("id"));
+
+        this.setPrice(spec.getPrice());
 
 
         OrderPlaced orderPlaced = new OrderPlaced(this);
@@ -85,11 +66,6 @@ public class Order  {
         OrderRepository orderRepository = OrderApplication.applicationContext.getBean(OrderRepository.class);
         return orderRepository;
     }
-
-
-
-
-
 
 }
 //>>> DDD / Aggregate Root
