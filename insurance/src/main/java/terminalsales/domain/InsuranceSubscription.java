@@ -36,30 +36,18 @@ public class InsuranceSubscription {
 
     //<<< Clean Arch / Port Method
     public static void subscribeInsurance(OrderPlaced orderPlaced) {
-        //implement business logic here:
 
-        /** Example 1:  new item 
+        ObjectMapper mapper = new ObjectMapper();
+        Map<Long, Object> specMap = mapper.convertValue(orderPlaced.getSpecId(), Map.class);
+        Map<String, Object> userMap = mapper.convertValue(orderPlaced.getUserId(), Map.class);
+
         InsuranceSubscription insuranceSubscription = new InsuranceSubscription();
+        insuranceSubscription.setCustomerId(userMap.get("id").toString());
+        insuranceSubscription.setTerminalProductId(specMap.get("id").toString());
+        insuranceSubscription.setIsBreakCompensation(orderPlaced.getBreakInsurance());
+        insuranceSubscription.setIsLostComponsation(orderPlaced.getLostInsurance());
         repository().save(insuranceSubscription);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        // if orderPlaced.specIduserId exists, use it
-        
-        // ObjectMapper mapper = new ObjectMapper();
-        // Map<Long, Object> orderMap = mapper.convertValue(orderPlaced.getSpecId(), Map.class);
-        // Map<String, Object> orderMap = mapper.convertValue(orderPlaced.getUserId(), Map.class);
-
-        repository().findById(orderPlaced.get???()).ifPresent(insuranceSubscription->{
-            
-            insuranceSubscription // do something
-            repository().save(insuranceSubscription);
-
-
-         });
-        */
 
     }
     //>>> Clean Arch / Port Method

@@ -31,6 +31,8 @@ public class Spec {
     @Embedded
     private DetailSpec detailSpec;
 
+    private Long price;
+
     public static SpecRepository repository() {
         SpecRepository specRepository = SpecApplication.applicationContext.getBean(
             SpecRepository.class
