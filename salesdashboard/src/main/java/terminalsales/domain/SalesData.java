@@ -59,7 +59,7 @@ public class SalesData {
         
         // ObjectMapper mapper = new ObjectMapper();
         // Map<Long, Object> orderMap = mapper.convertValue(orderPlaced.getSpecId(), Map.class);
-        // Map<String, Object> orderMap = mapper.convertValue(orderPlaced.getUserId(), Map.class);
+        // Map<Long, Object> orderMap = mapper.convertValue(orderPlaced.getUserId(), Map.class);
 
         repository().findById(orderPlaced.get???()).ifPresent(salesData->{
             

@@ -1,11 +1,15 @@
 package terminalsales.domain;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.Data;
 import terminalsales.InsuranceApplication;
 
@@ -47,8 +51,6 @@ public class InsuranceSubscription {
         insuranceSubscription.setIsBreakCompensation(orderPlaced.getBreakInsurance());
         insuranceSubscription.setIsLostComponsation(orderPlaced.getLostInsurance());
         repository().save(insuranceSubscription);
-
-
     }
     //>>> Clean Arch / Port Method
 
