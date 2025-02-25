@@ -34,21 +34,10 @@ public class User {
     }
 
     //<<< Clean Arch / Port Method
-    public static void addCoupon(
-        DiscountPolicyActivated discountPolicyActivated
-    ) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        User user = new User();
-        repository().save(user);
-
-        */
-
-        /** Example 2:  finding and process
+    public static void addCoupon(DiscountPolicyActivated discountPolicyActivated) {
         
 
-        repository().findById(discountPolicyActivated.get???()).ifPresent(user->{
+        repository().findById(Long.valueOf(discountPolicyActivated.getCustomerId())).ifPresent(user->{
             
             user // do something
             repository().save(user);

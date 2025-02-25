@@ -46,8 +46,9 @@ logging:
     org.springframework.cloud: debug
 
 api:
-  url: 
-    reservation: localhost:0 
+  url:
+    retargetting: localhost:8084
+    reservation: localhost:8052 
     
 
 server:
@@ -86,7 +87,8 @@ spring:
           contentType: application/json
 
 api:
-  url: 
+  url:
+    retargetting: localhost:8080 
     reservation: reservation:8080 
     
 
