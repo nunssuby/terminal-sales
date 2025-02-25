@@ -9,6 +9,20 @@ spring:
     gateway:
 #<<< API Gateway / Routes
       routes:
+        - id: request-payment
+          uri: http://localhost:8052
+          predicates:
+            - Path=/payments/**, 
+        - id: reservation
+          uri: http://localhost:8072
+          predicates:
+            - Path=/reservations/**, 
+        - id: notification
+          uri: http://localhost:8073
+          predicates:
+            - Path=/notifications/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
         - id: spec
           uri: http://localhost:8082
           predicates:
@@ -28,7 +42,7 @@ spring:
         - id: salesdashboard
           uri: http://localhost:8086
           predicates:
-            - Path=/salesData/**, /salesStatuses/**, /salesDashBoards/**, /salesDashBoards/**
+            - Path=/salesData/**, /salesDashBoards/**
         - id: user
           uri: http://localhost:8087
           predicates:
@@ -38,6 +52,8 @@ spring:
           predicates:
             - Path=/**
 #>>> API Gateway / Routes
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -47,7 +63,13 @@ spring:
               - "*"
             allowedHeaders:
               - "*"
+            exposedHeaders:
+              - "X-Total-Count"
+              - "Link"
+              - "Access-Control-Allow-Origin"
+              - "Access-Control-Allow-Credentials"
             allowCredentials: true
+            maxAge: 3600
 
 
 ---
