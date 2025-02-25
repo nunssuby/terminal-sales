@@ -10,6 +10,8 @@ import SpecSpecComparationDetail from "./components/listers/SpecSpecComparationD
 import SpecSpecManager from "./components/listers/SpecSpecCards"
 import SpecSpecDetail from "./components/listers/SpecSpecDetail"
 
+import GetTerminalView from "./components/GetTerminalView"
+import GetTerminalViewDetail from "./components/GetTerminalViewDetail"
 import OrderOrderManager from "./components/listers/OrderOrderCards"
 import OrderOrderDetail from "./components/listers/OrderOrderDetail"
 
@@ -57,6 +59,16 @@ export default new Router({
                 component: SpecSpecDetail
             },
 
+            {
+                path: '/specs/getTerminals',
+                name: 'GetTerminalView',
+                component: GetTerminalView
+            },
+            {
+                path: '/specs/getTerminals/:id',
+                name: 'GetTerminalViewDetail',
+                component: GetTerminalViewDetail
+            },
             {
                 path: '/orders/orders',
                 name: 'OrderOrderManager',

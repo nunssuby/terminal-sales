@@ -51,7 +51,7 @@ public class Retargetting {
         
         // ObjectMapper mapper = new ObjectMapper();
         // Map<Long, Object> specComparationMap = mapper.convertValue(specCompared.getSpecId(), Map.class);
-        // Map<String, Object> specComparationMap = mapper.convertValue(specCompared.getUserId(), Map.class);
+        // Map<Long, Object> specComparationMap = mapper.convertValue(specCompared.getUserId(), Map.class);
 
         repository().findById(specCompared.get???()).ifPresent(retargetting->{
             

@@ -16,7 +16,8 @@ import terminalsales.UserApplication;
 public class User {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String name;
 
