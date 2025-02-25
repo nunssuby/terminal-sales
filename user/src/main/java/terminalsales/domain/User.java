@@ -16,7 +16,8 @@ import terminalsales.UserApplication;
 public class User {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String name;
 
@@ -35,16 +36,14 @@ public class User {
 
     //<<< Clean Arch / Port Method
     public static void addCoupon(DiscountPolicyActivated discountPolicyActivated) {
-        
 
         repository().findById(Long.valueOf(discountPolicyActivated.getCustomerId())).ifPresent(user->{
             
-            user // do something
+            user.setCoupon("20% 할인 쿠폰");
             repository().save(user);
 
 
-         });
-        */
+        });
 
     }
     //>>> Clean Arch / Port Method

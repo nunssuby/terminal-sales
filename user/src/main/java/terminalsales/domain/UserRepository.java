@@ -7,4 +7,4 @@ import terminalsales.domain.*;
 //<<< PoEAA / Repository
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
 public interface UserRepository
-    extends PagingAndSortingRepository<User, String> {}
+    extends PagingAndSortingRepository<User, Long> {}
