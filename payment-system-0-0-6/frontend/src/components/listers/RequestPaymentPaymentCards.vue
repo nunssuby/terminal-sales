@@ -44,7 +44,7 @@
 <script>
 
     // const axios = require('axios').default;
-    import Payment from './Payment';
+    import Payment from './PaymentSystem';
 
     export default {
         name: 'RequestPaymentPaymentManager',
