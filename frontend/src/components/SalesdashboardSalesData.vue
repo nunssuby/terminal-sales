@@ -9,10 +9,10 @@
         </template>
 
         <v-card-title v-if="value._links">
-            SalesData # {{decode(value._links.self.href.split("/")[value._links.self.href.split("/").length - 1])}}
+            판매 데이터 # {{decode(value._links.self.href.split("/")[value._links.self.href.split("/").length - 1])}}
         </v-card-title >
         <v-card-title v-else>
-            SalesData
+            판매 데이터
         </v-card-title >        
 
         <v-card-text style="background-color: white;">

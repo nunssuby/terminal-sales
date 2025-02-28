@@ -1,6 +1,6 @@
 <template>
     <div>
-    <h1>SalesData</h1>
+    <h1>판매 데이터</h1>
         <v-row>
             <v-card
                 class="mx-auto"
@@ -26,7 +26,7 @@
                         color="primary"
                         style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                     >
-                        SalesData 등록
+                        판매 데이터 등록
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -66,13 +66,7 @@
 
         <v-col style="margin-bottom:40px;">
             <div class="text-center">
-                <v-dialog
-                        v-model="openDialog"
-                        width="332.5"
-                        fullscreen
-                        hide-overlay
-                        transition="dialog-bottom-transition"
-                >
+                <v-dialog v-model="openDialog" width="500">
 
                     <SalesdashboardSalesData :offline="offline"  :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                 
