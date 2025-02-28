@@ -22,5 +22,23 @@ public class PolicyHandler {
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='RequstPaymentCompleted'"
+    )
+    public void wheneverRequstPaymentCompleted_UpdatePaymentInfo(
+        @Payload RequstPaymentCompleted requstPaymentCompleted
+    ) {
+        RequstPaymentCompleted event = requstPaymentCompleted;
+        System.out.println(
+            "\n\n##### listener UpdatePaymentInfo : " +
+            requstPaymentCompleted +
+            "\n\n"
+        );
+
+        // Sample Logic //
+        Order.updatePaymentInfo(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor

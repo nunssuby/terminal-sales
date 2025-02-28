@@ -29,20 +29,36 @@
         <v-card-actions style="background-color: white;">
             <v-spacer></v-spacer>
             <div v-if="!editMode">
-                <v-btn
-                    color="primary"
-                    text
-                    @click="edit"
-                >
-                    수정
-                </v-btn>
-                <v-btn
-                    color="primary"
-                    text
-                    @click="remove"
-                >
-                    삭제
-                </v-btn>
+                <v-row>
+                    <payment-system-app>
+                        <payment-system
+                            service-type="pay"
+                            :request-info="JSON.stringify(paymentData)" 
+                            buyer-info-mode="true"
+                        ></payment-system>
+                    </payment-system-app>
+                    <v-btn
+                        color="primary"
+                        text
+                        @click="edit"
+                    >
+                        수정
+                    </v-btn>
+                    <v-btn
+                        color="primary"
+                        text
+                        @click="remove"
+                    >
+                        삭제
+                    </v-btn>
+                    <payment-system-app v-if="value.paymentId">
+                        <payment-system
+                            service-type="receipt"
+                            :request-info="JSON.stringify(paymentData)" 
+                            buyer-info-mode="true"
+                        ></payment-system>
+                    </payment-system-app>
+                </v-row>
             </div>
             <div v-else>
                 <v-btn
@@ -101,8 +117,20 @@
                 timeout: 5000,
                 text: '',
             },
+            paymentData: null,
         }),
 	async created() {
+            if(!this.paymentData){
+                this.paymentData = {
+                    itemId : this.decode(this.value._links.self.href.split("/")[this.value._links.self.href.split("/").length - 1]),
+                    price: this.value.fee,
+                    name: "주문금액액",
+                    buyerId: "user",
+                    buyerEmail: "user@gmail.com",
+                    buyerTel: "01012345678",
+                    buyerName: "user"
+                }
+            }
         },
         methods: {
             decode(value) {

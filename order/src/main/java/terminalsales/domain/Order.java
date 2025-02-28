@@ -67,5 +67,15 @@ public class Order  {
         return orderRepository;
     }
 
+    public static void updatePaymentInfo(RequstPaymentCompleted requstPaymentCompleted){
+        
+        repository().findById(requstPaymentCompleted.getItemId()).ifPresent(operation->{
+            
+            operation.setPaymentId(requstPaymentCompleted.getId());
+            operation.setPaymentStatus(requstPaymentCompleted.getStatus());
+            repository().save(operation);
+         });
+    }
+
 }
 //>>> DDD / Aggregate Root

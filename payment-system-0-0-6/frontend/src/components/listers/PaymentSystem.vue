@@ -226,7 +226,7 @@
     import * as PortOne from "@portone/browser-sdk";
 
     export default {
-        name: 'payment',
+        name: 'payment-system',
         props: {
             serviceType: String,
             requestInfo: {
@@ -284,7 +284,7 @@
         methods:{
             async pay(){
                 var me = this
-                const result = await axios.post(`http://localhost:8088/payments`, {
+                const result = await axios.post(axios.fixUrl('/payments'), {
                     itemId: me.requestInfo.itemId,
                     paymentId: me.paymentId,
                     price: me.requestInfo.price,
@@ -293,7 +293,7 @@
                     buyerName: me.requestInfo.buyerName,
                     buyerTel: me.requestInfo.buyerTel,
                     buyerEmail: me.requestInfo.buyerEmail,
-                    status: "PAYMENT_REQUESTED",
+                    status: "PAYMENT_COMPLETED",
                 })
                 const id = result.headers.location.split('/').pop();
                 const response = await PortOne.requestPayment({                    // Store ID 설정
@@ -313,7 +313,7 @@
                 })
 
                 if (response.success) {
-                    await axios.put(`http://localhost:8088/payments/${id}/receivepaymentcompleted`,
+                    await axios.put(axios.fixUrl(`/payments/${id}/receivepaymentcompleted`),
                         {
                             itemId: me.requestInfo.itemId,
                             paymentId: me.paymentId,
@@ -323,8 +323,9 @@
                         }
                     )
                     alert(`결제 성공`)
+                    location.reload()
                 } else {
-                    await axios.put(`http://localhost:8088/payments/${id}/receivepaymentcompleted`,
+                    await axios.put(axios.fixUrl(`/payments/${id}/receivepaymentcompleted`),
                         {
                             itemId: me.requestInfo.itemId,
                             paymentId: me.paymentId,
@@ -334,13 +335,14 @@
                         }
                     )
                     alert(`결제 성공`)
+                    location.reload()
                 }
                 me.closeDialog()
             },  
             async refund(){
                 var me = this
                 try {
-                    await axios.put(`http://localhost:8088/payments/${me.requestInfo.id}/requestcancelled`,
+                    await axios.put(axios.fixUrl(`/payments/${me.requestInfo.id}/requestcancelled`),
                         {
                             id: me.requestInfo.id,
                             itemId: me.requestInfo.itemId,
@@ -356,7 +358,7 @@
                     //     reason: me.requestInfo.reason
                     // })
                     if(response.status == 200) {
-                        await axios.put(`http://localhost:8088/payments/${me.requestInfo.id}/receivecancelledcompleted`,
+                        await axios.put(axios.fixUrl(`/payments/${me.requestInfo.id}/receivecancelledcompleted`),
                             {
                                 id: me.requestInfo.id,
                                 itemId: me.requestInfo.itemId,
@@ -367,7 +369,7 @@
                             })
                         alert("환불 완료")
                     } else {
-                        await axios.put(`http://localhost:8088/payments/${me.requestInfo.id}/receivecancelledcompleted`,
+                        await axios.put(axios.fixUrl(`/payments/${me.requestInfo.id}/receivecancelledcompleted`),
                             {
                                 id: me.requestInfo.id,
                                 itemId: me.requestInfo.itemId,
@@ -386,7 +388,7 @@
                 var me = this
                 try {
                     me.isReceiptCompleted = false
-                    let response = await axios.get(`http://localhost:8088/payments/${me.requestInfo.id}`,{'Content-Type': 'application/json'})
+                    let response = await axios.get(axios.fixUrl(`/payments/${me.requestInfo.id}`),{'Content-Type': 'application/json'})
                     if(response.status == 200) {
                         me.receiptInfo.paymentId = response.data.paymentId
                         me.receiptInfo.name = response.data.name
@@ -426,4 +428,3 @@
         margin-bottom:16px;
     }
 </style>
-
