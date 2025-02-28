@@ -28,8 +28,6 @@ import SalesStatusView from "./components/SalesStatusView"
 import SalesStatusViewDetail from "./components/SalesStatusViewDetail"
 import SalesDashBoardView from "./components/SalesDashBoardView"
 import SalesDashBoardViewDetail from "./components/SalesDashBoardViewDetail"
-import SalesDashBoardView from "./components/SalesDashBoardView"
-import SalesDashBoardViewDetail from "./components/SalesDashBoardViewDetail"
 import UserUserManager from "./components/listers/UserUserCards"
 import UserUserDetail from "./components/listers/UserUserDetail"
 

@@ -42,16 +42,15 @@
     font-weight:500 !important; 
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white !important;
 }
+.main-card:hover {
+  background-color:#1976D2;
+  cursor: pointer;
+}
 
-/* 메인 페이지 카드 뒤집기 스타일 */
-.flip-card {
-  perspective: 1000px !important;
-  width: 300px !important;
-  height: 300px !important;
+.main-card:hover .main-card-title {
+  color:white;
 }
-.flip-card.is-flipped .flip-card-inner {
-  transform: rotateY(180deg) !important;
-}
+
 .flip-card-inner {
   transition: transform 0.6s !important;
   transform-style: preserve-3d !important;

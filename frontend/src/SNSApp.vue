@@ -27,9 +27,7 @@
                     style="margin-left:10px; font-size:20px; cursor:pointer;"
 		        ></span> 
                 <v-spacer></v-spacer>
-
             </v-app-bar>
-
             <v-navigation-drawer app clipped flat v-model="sideBar">
                 <v-list>
                     <v-list-item
@@ -51,7 +49,7 @@
                         color="primary"
                         style="font-weight:700;"
                     >
-                        단말기스펙
+                        단말기 스펙
                     </v-list-item>
 
 
@@ -99,7 +97,7 @@
                         color="primary"
                         style="font-weight:700;"
                     >
-                        SalesData
+                        판매 데이터
                     </v-list-item>
 
 
@@ -111,7 +109,7 @@
                         color="primary"
                         style="font-weight:700;"
                     >
-                        판매현황
+                        판매현황 대시보드
                     </v-list-item>
                     <v-list-item
                         class="px-2"
@@ -121,17 +119,7 @@
                         color="primary"
                         style="font-weight:700;"
                     >
-                        판매 현황
-                    </v-list-item>
-                    <v-list-item
-                        class="px-2"
-                        key="salesDashBoards"
-                        to="/salesdashboards/salesDashBoards"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        판매현황
+                        판매 데이터 분석
                     </v-list-item>
                     <v-list-item
                         class="px-2"
@@ -154,18 +142,16 @@
                 <router-view></router-view>
             </v-container>
             <v-container style="padding:0px;" v-else fluid>
-                <div style="width:100%; margin:0px 0px 20px 0px; position: relative;">
-                    <v-img style="width:100%; height:300px;"
-                        src=""
+                <div style="width:100%; position: relative;">
+                    <v-img style="width:100%; height:200px;"
+                        src="/image/main2.png"
                     ></v-img>
                     <div class="App-main-text-overlap"></div>
                     <div class="App-sub-text-overlap"></div>
                 </div>
                 <v-row class="pa-0 ma-0">
-                    <v-col cols="4" class="pa-0 pa-0" v-for="(aggregate, index) in aggregate" :key="index">
-                        <div 
-                            class="flip-card pa-4"
-                        >
+                    <v-col cols="12" sm="6" md="4" lg="3" class="pa-0 pa-0" v-for="(aggregate, index) in aggregate" :key="index">
+                        <div class="pa-4" >
                             <v-card
                                 :key="aggregate.key"
                                 :to="aggregate.route"
@@ -207,72 +193,64 @@ export default {
                 description: 'SpecComparation을 관리하는 화면입니다.', 
                 key: 'specComparations', 
                 route: '/specs/specComparations',
-                ImageUrl: '',
+                ImageUrl: '/image/Specification1.png',
             },
             { 
-                title: '단말기스펙', 
+                title: '단말기 스펙', 
                 description: 'Spec을 관리하는 화면입니다.', 
                 key: 'specs', 
                 route: '/specs/specs',
-                ImageUrl: '',
+                ImageUrl: '/image/Specification2.png',
             },
             { 
                 title: '주문', 
                 description: 'Order을 관리하는 화면입니다.', 
                 key: 'orders', 
                 route: '/orders/orders',
-                ImageUrl: '',
+                ImageUrl: '/image/order.png',
             },
             { 
                 title: '리타겟팅', 
                 description: 'Retargetting을 관리하는 화면입니다.', 
                 key: 'retargettings', 
                 route: '/marketings/retargettings',
-                ImageUrl: '',
+                ImageUrl: '/image/retargettings.png',
             },
             { 
                 title: '보험가입', 
                 description: 'InsuranceSubscription을 관리하는 화면입니다.', 
                 key: 'insuranceSubscriptions', 
                 route: '/insurances/insuranceSubscriptions',
-                ImageUrl: '',
+                ImageUrl: '/image/insurance.png',
             },
             { 
-                title: 'SalesData', 
-                description: 'SalesData을 관리하는 화면입니다.', 
+                title: '판매 데이터', 
+                description: '판매 데이터를 관리하는 화면입니다.', 
                 key: 'salesData', 
                 route: '/salesdashboards/salesData',
-                ImageUrl: '',
+                ImageUrl: '/image/sales-data.png',
             },
             { 
                 title: '사용자', 
-                description: 'User을 관리하는 화면입니다.', 
+                description: '사용자를 관리하는 화면입니다.', 
                 key: 'users', 
                 route: '/users/users',
-                ImageUrl: '',
+                ImageUrl: '/image/user.png',
             },
             { 
-                title: '판매현황', 
-                description: 'SalesStatus을 관리하는 화면입니다.', 
+                title: '판매 현황',
+                description: '판매 현황을 관리하는 화면입니다.', 
                 key: 'salesStatuses', 
                 route: '/salesdashboards/salesStatuses',
-                ImageUrl: '',
+                ImageUrl: '/image/sales-status.png',
             },
             { 
-                title: '판매 현황', 
+                title: '판매 대시보드',
                 description: 'SalesDashBoard을 관리하는 화면입니다.', 
                 key: 'salesDashBoards', 
                 route: '/salesdashboards/salesDashBoards',
-                ImageUrl: '',
+                ImageUrl: '/image/sales-dashboard.png',
             },
-            { 
-                title: '판매현황', 
-                description: 'SalesDashBoard을 관리하는 화면입니다.', 
-                key: 'salesDashBoards', 
-                route: '/salesdashboards/salesDashBoards',
-                ImageUrl: '',
-            },
-            
         ],
     }),
     
