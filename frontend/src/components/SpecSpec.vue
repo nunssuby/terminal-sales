@@ -21,6 +21,7 @@
             <String label="단말기 종류" v-model="value.phoneType" :editMode="editMode" :inputUI="''"/>
             <Photo offline label="단말기 사진" v-model="value.image" :editMode="editMode" @change="change"/>
             <DetailSpec offline label="세부스펙" v-model="value.detailSpec" :editMode="editMode" @change="change"/>
+            <Number label="단말기 가격" v-model="value.price" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions style="background-color: white;">
