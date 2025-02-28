@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: marketing
-          image: "username/marketing:latest"
+          image: "user11registry.azurecr.io/marketing:0501"
           ports:
             - containerPort: 8080
           readinessProbe:
