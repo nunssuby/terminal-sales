@@ -1,5 +1,4 @@
 <template>
-
     <v-card outlined>
         <v-card-title>
             SpecId
