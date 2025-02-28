@@ -10,7 +10,6 @@
             
                 <v-list-item v-for="(item, idx) in value" :key="idx">
                     <v-list-item-content>
-                        <v-list-item-title>Message {{idx+1}}</v-list-item-title>
                         <v-list-item-subtitle>
                             Id :  {{item.id }} <br>
                         </v-list-item-subtitle>

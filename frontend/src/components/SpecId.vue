@@ -1,15 +1,21 @@
 <template>
-    <v-card outlined>
+    <v-card outlined @click="openDialog">
         <v-card-title>
-            SpecId
+            Spec : {{ referenceValue ? referenceValue._links.self.href.split('/').pop() : '' }}
         </v-card-title>
 
-        <v-card-text>
-        </v-card-text>
-
-        <v-card-actions v-if="inList">
-            <slot name="actions"></slot>
-        </v-card-actions>
+        <v-dialog v-model="pickerDialog" width="500">
+            <v-card>
+                <v-card-title>Spec</v-card-title>
+                <v-card-text>
+                    <SpecPicker v-model="value" @selected="pick"/>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="primary" text @click="pickerDialog = false">Close</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </v-card>
 </template>
 
