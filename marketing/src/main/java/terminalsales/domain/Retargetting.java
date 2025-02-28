@@ -58,7 +58,7 @@ public class Retargetting {
                     .createReservation(reservation);
 
                 DiscountPolicyActivated discountPolicyActivated = new DiscountPolicyActivated(retargetting);
-                discountPolicyActivated.publishAfterCommit(); // 변경 사항을 커밋한 후 이벤트를 발행
+                discountPolicyActivated.publishAfterCommit(); 
             }
     
 
