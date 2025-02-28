@@ -61,9 +61,7 @@
         <v-col style="margin-bottom:40px;">
             <div class="text-center">
                 <v-dialog v-model="openDialog" width="500">
-
                     <SpecSpecComparation :offline="offline"  :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
-                
                     <v-btn
                         class="gs-close-btn"
                         @click="closeDialog()"
