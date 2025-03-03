@@ -31,14 +31,14 @@ for SERVICE in "${SERVICES[@]}"; do
         echo "⚠️ Maven 프로젝트가 아님 (pom.xml 없음), 스킵: $SERVICE"
     fi
 
-    # Docker 빌드 (Dockerfile 존재 여부 확인)
+    # Podman 빌드 (Dockerfile 존재 여부 확인)
     if [ -f "Dockerfile" ]; then
-        echo "🐳 Docker 이미지 빌드: $SERVICE"
-        docker build -t "$ACR_NAME/$SERVICE:latest" . || { echo "❌ Docker 빌드 실패: $SERVICE"; exit 1; }
+        echo "🐳 Podman 이미지 빌드: $SERVICE"
+        podman build -t "$ACR_NAME/$SERVICE:latest" . || { echo "❌ Podman 빌드 실패: $SERVICE"; exit 1; }
 
-        # Docker Push
-        echo "📤 Docker 이미지 푸시: $SERVICE"
-        docker push "$ACR_NAME/$SERVICE:latest" || { echo "❌ Docker 푸시 실패: $SERVICE"; exit 1; }
+        # Podman Push
+        echo "📤 Podman 이미지 푸시: $SERVICE"
+        podman push "$ACR_NAME/$SERVICE:latest" || { echo "❌ Podman 푸시 실패: $SERVICE"; exit 1; }
     else
         echo "⚠️ Dockerfile이 없음, 스킵: $SERVICE"
     fi
